@@ -1,0 +1,39 @@
+<div *ngIf="plant$ | async as plant; else errorTemplate" class="plant-details">
+    
+    <div class="header">
+      <a [routerLink]="['/plants']" class="back-link">← Back to all plants</a>
+      <h1 class="plant-name">{{plant?.name}}</h1>
+      <p class="division">{{plant?.division}}</p>
+    </div>
+    
+    <div class="content">
+      <div class="sidebar">
+        <div class="card">
+          <h2>Address</h2>
+          <p>{{plant?.address}}</p>
+          <p>{{plant?.city}}</p>
+          <p>{{plant?.country}}</p>
+        </div>
+        
+        <div class="card">
+          <h2>Manager</h2>
+          <p>{{plant?.manager}}</p>
+        </div>
+      </div>
+      
+      <div class="main-content">
+        <div class="card description-card">
+          <h2>Description</h2>
+          <p>
+            {{plant?.description}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #errorTemplate>
+    <p class="error-message">{{ errorMessage$ | async }}</p>
+  </ng-template>
+
+  
+  

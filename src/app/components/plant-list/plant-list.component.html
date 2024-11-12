@@ -1,0 +1,18 @@
+
+  <div class="page-container">
+    <div class="header">Plants</div>
+    <div class="cards-container">
+      <div *ngIf="errorMessage$ | async as errorMessage" class="error">{{ errorMessage }}</div>
+      <ng-container *ngIf="(plants$ | async) as plants; else loading">
+        <app-common-card *ngFor="let plant of plants; trackBy: trackByPlantId" [plant]="plant"></app-common-card>
+      </ng-container>
+      <ng-template #loading>
+        <p>Loading plants...</p>
+      </ng-template>
+    </div>
+    <button *ngIf="hasMoreResults" class="load-more-btn" (click)="loadPlants()">Load More Results</button>
+  </div>
+
+  
+  
+  
